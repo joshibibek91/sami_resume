@@ -15,7 +15,10 @@ export default function ScrollToTop() {
   return (
     <button
       className={`scroll-top ${visible ? 'visible' : ''}`}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.replaceState(null, '', window.location.pathname);
+      }}
       aria-label="Scroll to top"
     >
       <HiArrowUp />

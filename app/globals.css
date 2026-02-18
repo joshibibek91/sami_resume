@@ -1410,7 +1410,7 @@ h2 {
   }
 
   .profile-frame {
-    max-width: 280px;
+    max-width: 322px;
     margin: 0 auto;
   }
 
@@ -1452,9 +1452,10 @@ h2 {
 
 @media (max-width: 640px) {
   .hero {
-    margin-top: 30px;
+    margin-top: 20px;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 20px;
   }
 
   .hero-copy {

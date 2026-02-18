@@ -1,306 +1,519 @@
 import Image from 'next/image';
+import ScrollReveal from './components/ScrollReveal';
+import SkillBar from './components/SkillBar';
+import TypeWriter from './components/TypeWriter';
+import {
+  FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram,
+  FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaBuilding,
+  FaMoneyCheckAlt, FaHandshake, FaChartBar, FaFileInvoiceDollar,
+  FaClipboardCheck, FaUsers, FaCalendarAlt
+} from 'react-icons/fa';
+import {
+  HiOutlineLightBulb, HiOutlineClipboardList, HiOutlineCog,
+  HiOutlineCheckCircle, HiOutlineRefresh, HiOutlinePresentationChartBar
+} from 'react-icons/hi';
 
-const navLinks = ['Home', 'About', 'Services', 'Portfolio', 'Testimonials', 'Price', 'Blog', 'Contact'];
+const navLinks = ['Home', 'About', 'Services', 'Portfolio', 'Testimonials', 'Blog', 'Contact'];
+
 const education = [
   {
-    title: 'Computer Science',
-    meta: 'Cambridge University / 2004 - 2007',
-    text: 'Put a little bit details what your degree is about, what you learned most, and so on.'
+    title: 'Bachelor of Business Administration',
+    meta: 'Tribhuvan University / 2010 - 2014',
+    text: 'Focused on business management, accounting principles, and organizational development with emphasis on corporate finance.'
   },
   {
-    title: 'Bachelor Degree',
-    meta: 'University of Tokyo / 2008 - 2010',
-    text: 'You can add as many degree as possible. Write about your degree is about and so on.'
+    title: 'Graduate Diploma in Accounting',
+    meta: 'Charles Darwin University / 2016 - 2017',
+    text: 'Specialized in financial accounting, taxation, auditing, and corporate governance within the Australian regulatory framework.'
   },
   {
-    title: 'Master Degree',
-    meta: 'Harvard University / 2009 - 2011',
-    text: 'You can add as many degree as possible. Write about your degree is about and so on.'
+    title: 'Certificate IV in Government',
+    meta: 'NTG Training / 2019 - 2020',
+    text: 'Professional development in public sector administration, policy implementation, and government service delivery standards.'
   }
 ];
 
 const experience = [
   {
-    title: 'Front End Developer',
-    meta: 'Adobe / 2015 - 2017',
-    text: 'Put a little bit details about your experiences, your job role, your responsibility and so on.'
+    title: 'Accounts Receivable Officer',
+    meta: 'NTG - Dept. of Corporate & Digital Development / 2018 - 2021',
+    text: 'Managed accounts receivable processes, reconciled client accounts, processed invoices, and ensured compliance with government financial regulations.'
   },
   {
-    title: 'Senior Developer',
-    meta: 'Google / 2017 - 2018',
-    text: 'Add more experiences. Put details about your job role, your responsibility and so on.'
-  },
-  {
-    title: 'Full Stack Designer',
-    meta: 'Oracle / 2018 - Present',
-    text: 'Add more experiences. Put details about your job role, your responsibility and so on.'
+    title: 'Senior Client Service Officer',
+    meta: 'NTG - Dept. of Corporate & Digital Development / 2021 - Present',
+    text: 'Leading client service operations in the Account Receivable Unit, managing stakeholder relationships, and driving process improvements across the department.'
   }
 ];
 
-const services = ['Apps Development', 'UI/UX Design', 'Web Development', 'Strategy Solutions', 'Digital Marketing', 'Social Media'];
+const skills = [
+  { name: 'Accounts Receivable Management', percent: 95 },
+  { name: 'Client Relationship Management', percent: 90 },
+  { name: 'Financial Reporting & Analysis', percent: 88 },
+  { name: 'Government Compliance & Policy', percent: 85 },
+  { name: 'Microsoft Office / Excel', percent: 92 },
+  { name: 'Stakeholder Communication', percent: 90 }
+];
+
+const services = [
+  { name: 'Accounts Receivable', Icon: FaMoneyCheckAlt },
+  { name: 'Client Service Management', Icon: FaHandshake },
+  { name: 'Financial Reconciliation', Icon: FaChartBar },
+  { name: 'Invoice Processing', Icon: FaFileInvoiceDollar },
+  { name: 'Compliance & Auditing', Icon: FaClipboardCheck },
+  { name: 'Stakeholder Relations', Icon: FaUsers }
+];
 
 const portfolio = [
-  { title: 'Hotel Management', img: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800' },
-  { title: 'Business Consultant', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800' },
-  { title: 'Pharmacy Software', img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800' },
-  { title: 'Make your Dream', img: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800' }
+  { title: 'AR Process Optimization', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800' },
+  { title: 'Client Portal Implementation', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800' },
+  { title: 'Financial Reporting Dashboard', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800' },
+  { title: 'Debt Recovery Framework', img: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=800' },
+  { title: 'Digital Invoice System', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800' },
+  { title: 'Compliance Audit Project', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800' },
+  { title: 'Stakeholder Engagement Plan', img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800' },
+  { title: 'Training & Development Program', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800' },
+  { title: 'Process Documentation', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800' }
+];
+
+const workProcess = [
+  { step: 'Client Consultation', Icon: HiOutlineLightBulb },
+  { step: 'Assessment & Planning', Icon: HiOutlineClipboardList },
+  { step: 'Implementation', Icon: HiOutlineCog },
+  { step: 'Quality Review', Icon: HiOutlineCheckCircle },
+  { step: 'Continuous Improvement', Icon: HiOutlineRefresh },
+  { step: 'Reporting & Delivery', Icon: HiOutlinePresentationChartBar }
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Mitchell',
+    role: 'Director, Corporate Services',
+    text: 'Samikshya has been instrumental in transforming our accounts receivable processes. Her attention to detail and commitment to client service excellence is outstanding.'
+  },
+  {
+    name: 'David Thompson',
+    role: 'Finance Manager, NTG',
+    text: 'Working with Samikshya has been a pleasure. She brings a proactive approach to problem-solving and consistently delivers results that exceed expectations.'
+  },
+  {
+    name: 'Rebecca Chen',
+    role: 'Senior Policy Advisor',
+    text: 'Samikshya\'s ability to manage complex stakeholder relationships while maintaining accuracy in financial operations is truly remarkable. A valued team member.'
+  }
 ];
 
 const blogs = [
-  { title: 'Repair your EliteBook when it is not working correctly', img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800', date: 'Jul 12, 2020' },
-  { title: 'What Gets In The Way Of Strategy', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', date: 'Jun 27, 2020' },
-  { title: 'The Best Sale Marketer Of The Next Year', img: 'https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=800', date: 'Jun 20, 2020' }
+  { title: 'Best Practices in Government Accounts Receivable Management', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800', date: 'Jan 15, 2026' },
+  { title: 'Streamlining Client Service Operations in the Public Sector', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', date: 'Dec 10, 2025' },
+  { title: 'The Future of Digital Transformation in Government Finance', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800', date: 'Nov 28, 2025' }
+];
+
+const socialLinks = [
+  { Icon: FaFacebookF, href: '#' },
+  { Icon: FaTwitter, href: '#' },
+  { Icon: FaLinkedinIn, href: '#' },
+  { Icon: FaInstagram, href: '#' }
 ];
 
 export default function Home() {
   return (
     <main>
-      <header className="container topbar">
-        <div className="logo">PikMe</div>
-        <nav>
-          {navLinks.map((link) => (
-            <a key={link} href={`#${link.toLowerCase()}`} className={link === 'Home' ? 'active' : ''}>
-              {link}
-            </a>
-          ))}
-        </nav>
+      {/* ── Navbar ── */}
+      <header className="topbar">
+        <div className="container topbar-inner">
+          <div className="logo">Samikshya<span className="accent">.</span></div>
+          <nav>
+            {navLinks.map((link) => (
+              <a key={link} href={`#${link.toLowerCase()}`} className={link === 'Home' ? 'active' : ''}>
+                {link}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
 
-      <section id="home" className="hero section container">
-        <div className="hero-copy">
-          <h1>I'm Emma Smith</h1>
-          <h3>
-            I&apos;m a <span>Web Developer</span>
-          </h3>
-          <p>
-            Put your intro here. For example, I am a "Web developer" or whatever your profession is with 5 years of
-            experience. In a Personal Portfolio website, this part attracts your prospective clients most.
-          </p>
-          <button className="btn">Hire Me</button>
-        </div>
-        <div className="hero-image-wrap">
-          <Image
-            src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=900"
-            alt="Emma standing in hero section"
-            width={420}
-            height={520}
-            className="hero-image"
-            priority
-          />
+      {/* ── Hero ── */}
+      <section id="home" className="hero-section">
+        <div className="container hero">
+          <div className="hero-copy">
+            <ScrollReveal direction="left">
+              <h1>I&apos;m Samikshya Joshi</h1>
+              <h3>
+                I&apos;m a <TypeWriter />
+              </h3>
+              <p>
+                Senior Client Service Officer at the Account Receivable Unit,
+                Department of Corporate and Digital Development, Northern Territory
+                Government, Australia. Dedicated to delivering excellence in government
+                financial services and client relations.
+              </p>
+              <button className="btn btn-hover-glow">Contact Me</button>
+            </ScrollReveal>
+          </div>
+          <div className="hero-image-wrap">
+            <ScrollReveal direction="right">
+              <div className="hero-img-frame">
+                <Image
+                  src="/images/samikshya.png"
+                  alt="Samikshya Joshi"
+                  width={420}
+                  height={520}
+                  className="hero-image"
+                  priority
+                />
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
+      {/* ── About ── */}
       <section id="about" className="section about-bg">
         <div className="container about-grid">
-          <div className="profile-frame">
-            <div className="social-col">
-              <span>f</span>
-              <span>t</span>
-              <span>in</span>
-              <span>b</span>
+          <ScrollReveal direction="left">
+            <div className="profile-frame">
+              <div className="social-col">
+                {socialLinks.map(({ Icon, href }) => (
+                  <a key={Icon.name} href={href} className="social-icon">
+                    <Icon />
+                  </a>
+                ))}
+              </div>
+              <div className="portrait-wrap">
+                <div className="portrait-box">
+                  <Image
+                    src="/images/samikshya.png"
+                    alt="Samikshya Joshi portrait"
+                    width={320}
+                    height={420}
+                    className="portrait"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="portrait-box">
-              <Image
-                src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=900"
-                alt="Emma portrait"
-                width={320}
-                height={420}
-                className="portrait"
-              />
+          </ScrollReveal>
+          <ScrollReveal direction="right" delay={200}>
+            <div className="about-copy">
+              <div className="hello-line">
+                <span className="accent-label">Hello</span>
+                <span className="line-dash" />
+              </div>
+              <h2>I&apos;m a Senior Client Service Officer</h2>
+              <p>
+                With extensive experience in government financial services, I specialize in
+                accounts receivable management, client relationship building, and process
+                optimization. I am passionate about delivering high-quality service and driving
+                efficiency within the Department of Corporate and Digital Development at the
+                Northern Territory Government, Australia.
+              </p>
+              <div className="bio-grid">
+                <p><strong>Name:</strong><br />Samikshya Joshi</p>
+                <p><strong>Email:</strong><br />samikshya@ntg.gov.au</p>
+                <p><strong>Department:</strong><br />Corporate &amp; Digital Dev.</p>
+                <p><strong>Phone:</strong><br />+61 8 8999 XXXX</p>
+                <p><strong>Role:</strong><br />Sr. Client Service Officer</p>
+                <p><strong>Location:</strong><br />Darwin, NT, Australia</p>
+              </div>
+              <div className="btn-row">
+                <button className="btn btn-outline btn-hover-glow">Download CV</button>
+                <button className="btn btn-outline btn-hover-glow">Hire Me</button>
+              </div>
             </div>
-          </div>
-          <div className="about-copy">
-            <h5>HELLO</h5>
-            <h2>I&apos;m Creative Web Developer</h2>
-            <p>
-              Your future client wants to know about you before they hire. Put some more information about yourself.
-              For example, I provide cost-effective and high quality products to meet my client&apos;s needs and so on.
-            </p>
-            <div className="bio-grid">
-              <p>
-                <strong>Name:</strong> Emma Smith
-              </p>
-              <p>
-                <strong>Email:</strong> emma@yourdomain.com
-              </p>
-              <p>
-                <strong>Age:</strong> 23 Years
-              </p>
-              <p>
-                <strong>Phone:</strong> +123-456-789-000
-              </p>
-              <p>
-                <strong>Job:</strong> Freelancer
-              </p>
-              <p>
-                <strong>From:</strong> New York
-              </p>
-            </div>
-            <div className="btn-row">
-              <button className="btn">Download CV</button>
-              <button className="btn btn-outline">Hire Me</button>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section className="section section-soft">
+      {/* ── Education & Experience ── */}
+      <section className="section">
         <div className="container two-col">
-          <div>
-            <h3 className="sec-title">Education</h3>
-            {education.map((item) => (
-              <article key={item.title} className="card entry">
-                <h4>{item.title}</h4>
-                <small>{item.meta}</small>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-          <div>
-            <h3 className="sec-title">Experience</h3>
-            {experience.map((item) => (
-              <article key={item.title} className="card entry">
-                <h4>{item.title}</h4>
-                <small>{item.meta}</small>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
+          <ScrollReveal direction="left">
+            <div>
+              <h3 className="sec-title">Education</h3>
+              <div className="entries-list">
+                {education.map((item) => (
+                  <article key={item.title} className="entry">
+                    <div className="entry-arrow" />
+                    <div className="entry-content">
+                      <h4>{item.title}</h4>
+                      <small>{item.meta}</small>
+                      <p>{item.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="right" delay={200}>
+            <div>
+              <h3 className="sec-title">Experience</h3>
+              <div className="entries-list">
+                {experience.map((item) => (
+                  <article key={item.title} className="entry">
+                    <div className="entry-arrow" />
+                    <div className="entry-content">
+                      <h4>{item.title}</h4>
+                      <small>{item.meta}</small>
+                      <p>{item.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section id="services" className="section">
-        <div className="container center-head">
-          <p>What I Do?</p>
-          <h2>My Services</h2>
-        </div>
-        <div className="container service-grid">
-          {services.map((service) => (
-            <article key={service} className="card service-card">
-              <div className="icon-dot" />
-              <h4>{service}</h4>
-              <p>Show your prospective clients what service you provide with a ready-made service section.</p>
-              <a href="#">Read More</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
+      {/* ── Skills ── */}
       <section className="section section-soft">
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">What I Know</p>
+              <h2>My Skills</h2>
+            </div>
+          </ScrollReveal>
+          <div className="skills-list">
+            {skills.map((skill) => (
+              <SkillBar key={skill.name} name={skill.name} percent={skill.percent} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Services ── */}
+      <section id="services" className="section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">What I Do</p>
+              <h2>My Services</h2>
+            </div>
+          </ScrollReveal>
+          <div className="service-grid">
+            {services.map((service, i) => (
+              <ScrollReveal key={service.name} delay={i * 100}>
+                <article className="card service-card hover-lift">
+                  <div className="service-icon-wrap">
+                    <service.Icon className="service-svg-icon" />
+                  </div>
+                  <h4>{service.name}</h4>
+                  <p>Professional expertise in {service.name.toLowerCase()} with a focus on government standards and client satisfaction.</p>
+                  <a href="#" className="read-more">Learn More &rarr;</a>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Stats ── */}
+      <section className="section stats-section">
         <div className="container stat-grid">
           {[
-            ['3', 'Years of Experience'],
-            ['215', 'Complete Project'],
-            ['2,500', 'Happy Client'],
-            ['12', 'Award Winner']
-          ].map(([count, label]) => (
-            <div className="card stat" key={label}>
-              <h3>{count}</h3>
-              <p>{label}</p>
+            ['7+', 'Years Of Experience'],
+            ['500+', 'Clients Served'],
+            ['99%', 'Satisfaction Rate'],
+            ['50+', 'Process Improvements']
+          ].map(([count, label], i) => (
+            <ScrollReveal key={label} delay={i * 120}>
+              <div className="stat hover-lift">
+                <h3>{count}</h3>
+                <p>{label}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Portfolio ── */}
+      <section id="portfolio" className="section section-soft">
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">Take a Look At</p>
+              <h2>Portfolio</h2>
             </div>
-          ))}
+          </ScrollReveal>
+          <div className="portfolio-grid">
+            {portfolio.map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 80}>
+                <article className="card portfolio-card">
+                  <div className="portfolio-img-wrap">
+                    <Image src={item.img} alt={item.title} width={400} height={240} className="thumb" />
+                    <div className="portfolio-overlay">
+                      <span className="overlay-icon">+</span>
+                    </div>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <small>Government Financial Services</small>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="portfolio" className="section">
-        <div className="container center-head">
-          <p>Take A Look At</p>
-          <h2>Portfolio</h2>
-        </div>
-        <div className="container portfolio-grid">
-          {portfolio.map((item) => (
-            <article key={item.title} className="card portfolio-card">
-              <Image src={item.img} alt={item.title} width={260} height={160} className="thumb" />
-              <h4>{item.title}</h4>
-              <p>Software</p>
-              <small>Sample time here looks good</small>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section section-soft">
-        <div className="container center-head">
-          <p>My Service Cost</p>
-          <h2>Price</h2>
-        </div>
-        <div className="container price-grid">
-          {['Basic', 'Professional', 'Premium'].map((plan, i) => (
-            <article key={plan} className="card price-card">
-              <h4>{plan}</h4>
-              <div className="price">${[99, 399, 599][i]}</div>
-              <ul>
-                <li>Frontend Builder</li>
-                <li>Regular Support</li>
-                <li>White Labeling</li>
-                <li>{i === 0 ? '1 Years of Updates' : i === 1 ? '2 Years of Updates' : '3 Years of Updates'}</li>
-              </ul>
-              <button className="btn">Get Started</button>
-            </article>
-          ))}
+      {/* ── Work Process ── */}
+      <section className="section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">How I Work</p>
+              <h2>My Work Process</h2>
+            </div>
+          </ScrollReveal>
+          <div className="process-grid">
+            {workProcess.map((item, i) => (
+              <ScrollReveal key={item.step} delay={i * 120}>
+                <div className="process-step">
+                  <div className="process-number">
+                    <item.Icon className="process-icon" />
+                  </div>
+                  <h4>{item.step}</h4>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* ── Testimonials ── */}
+      <section id="testimonials" className="section section-soft">
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">What People Say</p>
+              <h2>Testimonials</h2>
+            </div>
+          </ScrollReveal>
+          <div className="testimonials-list">
+            {testimonials.map((t, i) => (
+              <ScrollReveal key={t.name} delay={i * 150}>
+                <div className="card testimonial-card hover-lift">
+                  <div className="quote-mark">&ldquo;</div>
+                  <p>{t.text}</p>
+                  <div className="testimonial-author">
+                    <div className="author-avatar">{t.name[0]}</div>
+                    <div>
+                      <h4>{t.name}</h4>
+                      <span>{t.role}</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Blog ── */}
       <section id="blog" className="section">
-        <div className="container center-head">
-          <p>Latest News</p>
-          <h2>Blog</h2>
-        </div>
-        <div className="container blog-grid">
-          {blogs.map((post) => (
-            <article key={post.title} className="card blog-card">
-              <Image src={post.img} alt={post.title} width={360} height={180} className="thumb" />
-              <h4>{post.title}</h4>
-              <small>{post.date}</small>
-            </article>
-          ))}
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">Latest Insights</p>
+              <h2>Blog</h2>
+            </div>
+          </ScrollReveal>
+          <div className="blog-grid">
+            {blogs.map((post, i) => (
+              <ScrollReveal key={post.title} delay={i * 150}>
+                <article className="card blog-card hover-lift">
+                  <div className="blog-img-wrap">
+                    <Image src={post.img} alt={post.title} width={400} height={200} className="thumb" />
+                  </div>
+                  <div className="blog-card-body">
+                    <small><FaCalendarAlt className="inline-icon" /> {post.date}</small>
+                    <h4>{post.title}</h4>
+                    <a href="#" className="read-more">Read More &rarr;</a>
+                  </div>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* ── CTA ── */}
       <section className="cta">
         <div className="container cta-inner">
-          <div>
-            <h3>If you need any project to be done</h3>
-            <p>Create your call to action and get more leads.</p>
-          </div>
-          <button className="btn btn-light">Contact Us</button>
+          <ScrollReveal direction="left">
+            <div>
+              <h3>Looking for professional financial service expertise?</h3>
+              <p>Let&apos;s connect and discuss how I can help your organization</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="right" delay={200}>
+            <button className="btn btn-light btn-hover-glow">Contact Me</button>
+          </ScrollReveal>
         </div>
       </section>
 
+      {/* ── Contact ── */}
       <section id="contact" className="section section-soft">
-        <div className="container center-head">
-          <p>Get In Touch</p>
-          <h2>Contact Me</h2>
-        </div>
-        <div className="container contact-grid">
-          <form className="contact-form">
-            <input placeholder="Your Name (required)" />
-            <input placeholder="Your Email (required)" />
-            <input placeholder="Subject" />
-            <textarea placeholder="Your Message" rows={6} />
-            <button className="btn">Send</button>
-          </form>
-          <div className="contact-copy">
-            <h4>Let&apos;s talk about everything!</h4>
-            <p>
-              After connecting your clients, let them contact you directly with this functional contact form in the
-              PikMe free Portfolio theme.
-            </p>
-            <p>
-              <strong>Address:</strong> 123 Street, New York, USA
-            </p>
-            <p>
-              <strong>Phone:</strong> +123-456-789-000
-            </p>
-            <p>
-              <strong>Email:</strong> info@yourdomain.com
-            </p>
-            <p>
-              <strong>Website:</strong> www.yourdomain.com
-            </p>
+        <div className="container">
+          <ScrollReveal>
+            <div className="center-head">
+              <p className="sub-label">Get in Touch</p>
+              <h2>Contact Me</h2>
+            </div>
+          </ScrollReveal>
+          <div className="contact-grid">
+            <ScrollReveal direction="left">
+              <form className="contact-form">
+                <input placeholder="Your Name (required)" />
+                <input placeholder="Your Email (required)" />
+                <input placeholder="Subject" />
+                <textarea placeholder="Your Message" rows={6} />
+                <button className="btn btn-hover-glow" type="button">Send Message</button>
+              </form>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={200}>
+              <div className="contact-copy">
+                <h4>Let&apos;s talk about everything!</h4>
+                <p>
+                  Whether you have questions about accounts receivable processes, client service
+                  management, or government finance operations, feel free to reach out. I&apos;m
+                  always happy to connect and share insights.
+                </p>
+                <div className="contact-info">
+                  <div className="contact-info-item">
+                    <FaMapMarkerAlt className="contact-icon-svg" />
+                    <div><strong>Address</strong><br />Darwin, Northern Territory, Australia</div>
+                  </div>
+                  <div className="contact-info-item">
+                    <FaPhoneAlt className="contact-icon-svg" />
+                    <div><strong>Phone</strong><br />+61 8 8999 XXXX</div>
+                  </div>
+                  <div className="contact-info-item">
+                    <FaEnvelope className="contact-icon-svg" />
+                    <div><strong>Email</strong><br />samikshya@ntg.gov.au</div>
+                  </div>
+                  <div className="contact-info-item">
+                    <FaBuilding className="contact-icon-svg" />
+                    <div><strong>Organization</strong><br />Northern Territory Government</div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
+
+      {/* ── Footer ── */}
+      <footer className="footer">
+        <div className="container footer-inner">
+          <p>&copy; Samikshya Joshi. All Rights Reserved. 2026</p>
+          <div className="footer-socials">
+            {socialLinks.map(({ Icon, href }) => (
+              <a key={Icon.name} href={href} className="footer-social-icon">
+                <Icon />
+              </a>
+            ))}
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

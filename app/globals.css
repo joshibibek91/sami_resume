@@ -1452,10 +1452,10 @@ h2 {
 
 @media (max-width: 640px) {
   .hero {
-    margin-top: 20px;
+    margin-top: 10px;
     padding-top: 50px;
     padding-bottom: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .hero-copy {

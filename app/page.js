@@ -151,7 +151,7 @@ export default function Home() {
               <button className="btn btn-hover-glow">Contact Me</button>
             </ScrollReveal>
           </div>
-          <div className="hero-image-wrap">
+          <div className="hero-image-wrap hide-mobile">
             <ScrollReveal direction="right">
               <div className="hero-img-frame">
                 <Image

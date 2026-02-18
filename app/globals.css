@@ -1254,6 +1254,10 @@ nav a.active {
     margin: 0 auto;
   }
 
+  .hide-mobile {
+    display: none;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
   }

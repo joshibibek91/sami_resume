@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   --accent: #e84545;
@@ -24,13 +24,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: 'Poppins', 'Segoe UI', Arial, Helvetica, sans-serif;
+  font-family: "Poppins", "Segoe UI", Arial, Helvetica, sans-serif;
   background: #fff;
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+main {
   overflow-x: hidden;
 }
 
@@ -54,7 +60,9 @@ h2 {
    ═══════════════════════════════════════════ */
 .scroll-reveal {
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .scroll-reveal--up {
@@ -90,6 +98,7 @@ h2 {
 
 .section {
   padding: 90px 0;
+  overflow-x: clip;
 }
 
 .section-soft {
@@ -147,14 +156,16 @@ h2 {
 }
 
 .desktop-nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
   height: 2px;
   background: var(--accent);
-  transition: width 0.3s, left 0.3s;
+  transition:
+    width 0.3s,
+    left 0.3s;
 }
 
 .desktop-nav a:hover::after,
@@ -215,7 +226,9 @@ h2 {
   font-weight: 500;
   color: var(--text);
   border-bottom: 1px solid var(--line);
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .mobile-menu a:last-child {
@@ -247,7 +260,10 @@ h2 {
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    background 0.2s;
 }
 
 .scroll-top.visible {
@@ -265,7 +281,7 @@ h2 {
    ═══════════════════════════════════════════ */
 .hero-section {
   background: #fff;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .hero {
@@ -314,8 +330,14 @@ h2 {
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .hero-copy p {
@@ -335,7 +357,7 @@ h2 {
 }
 
 .hero-img-frame::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: -14px;
@@ -412,8 +434,9 @@ h2 {
    HOVER LIFT (reusable)
    ═══════════════════════════════════════════ */
 .hover-lift {
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.35s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s ease;
 }
 
 .hover-lift:hover {
@@ -443,7 +466,7 @@ h2 {
 
 .portrait-wrap::before,
 .portrait-wrap::after {
-  content: '';
+  content: "";
   position: absolute;
   border: 3px solid var(--accent);
   pointer-events: none;
@@ -516,7 +539,10 @@ h2 {
   place-items: center;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    box-shadow 0.3s;
 }
 
 .social-icon:hover {
@@ -632,7 +658,9 @@ h2 {
   border-bottom: 8px solid transparent;
   border-left: 12px solid var(--accent);
   margin-top: 5px;
-  transition: transform 0.3s, border-left-color 0.3s;
+  transition:
+    transform 0.3s,
+    border-left-color 0.3s;
 }
 
 .entry:hover .entry-arrow {
@@ -713,19 +741,28 @@ h2 {
 }
 
 .skill-fill::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
   animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -753,7 +790,7 @@ h2 {
 }
 
 .center-head h2::after {
-  content: '';
+  content: "";
   display: block;
   width: 50px;
   height: 3px;
@@ -788,7 +825,7 @@ h2 {
 }
 
 .service-card::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -812,7 +849,9 @@ h2 {
   display: grid;
   place-items: center;
   margin: 0 auto 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .service-card:hover .service-icon-wrap {
@@ -948,8 +987,9 @@ h2 {
   display: grid;
   place-items: center;
   margin: 0 auto 14px;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.4s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease;
 }
 
 .process-num-text {
@@ -1049,7 +1089,9 @@ h2 {
 .price-card {
   text-align: center;
   padding: 32px 22px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .price-featured {
@@ -1059,7 +1101,7 @@ h2 {
 }
 
 .price-featured::after {
-  content: 'Popular';
+  content: "Popular";
   position: absolute;
   top: 12px;
   right: 12px;
@@ -1176,6 +1218,7 @@ h2 {
   background: linear-gradient(135deg, var(--accent), #ff7979);
   color: #fff;
   padding: 50px 0;
+  overflow-x: clip;
 }
 
 .cta-inner {
@@ -1219,7 +1262,9 @@ h2 {
   background: var(--bg-soft);
   border-radius: 8px;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .contact-form input:focus,
@@ -1330,7 +1375,7 @@ h2 {
   /* ▼▼▼ ADJUST THIS VALUE to push hero content down/up on mobile ▼▼▼ */
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 50px;      /* ← change this to move "I'm Samikshya Joshi" up or down */
+    padding-top: 50px; /* ← change this to move "I'm Samikshya Joshi" up or down */
     padding-bottom: 10px;
     text-align: center;
     min-height: auto;
@@ -1406,11 +1451,11 @@ h2 {
 }
 
 @media (max-width: 640px) {
-  /* ▼▼▼ ADJUST THIS VALUE for smaller phones ▼▼▼ */
   .hero {
-    padding-top: 40px;       /* ← change this for phone hero spacing */
+    margin-top: 30px;
+    padding-top: 50px;
+    padding-bottom: 0;
   }
-  /* ▲▲▲ END ▲▲▲ */
 
   .hero-copy {
     padding-bottom: 10px;

@@ -307,25 +307,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats ── */}
-      <section className="section stats-section">
-        <div className="container stat-grid">
-          {[
-            ['7+', 'Years Of Experience'],
-            ['500+', 'Clients Served'],
-            ['99%', 'Satisfaction Rate'],
-            ['50+', 'Process Improvements']
-          ].map(([count, label], i) => (
-            <ScrollReveal key={label} delay={i * 120}>
-              <div className="stat hover-lift">
-                <h3>{count}</h3>
-                <p>{label}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
       {/* ── Portfolio ── */}
       <section id="portfolio" className="section section-soft">
         <div className="container">

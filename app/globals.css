@@ -758,44 +758,6 @@ nav a.active {
 }
 
 /* ═══════════════════════════════════════════
-   STATS
-   ═══════════════════════════════════════════ */
-.stats-section {
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
-  color: #fff;
-}
-
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-.stat {
-  text-align: center;
-  padding: 36px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(4px);
-}
-
-.stat h3 {
-  font-size: 2.6rem;
-  color: var(--accent);
-  margin-bottom: 6px;
-  font-weight: 800;
-}
-
-.stat p {
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  font-weight: 500;
-}
-
-/* ═══════════════════════════════════════════
    PORTFOLIO
    ═══════════════════════════════════════════ */
 .portfolio-grid {
@@ -1311,9 +1273,7 @@ nav a.active {
   }
 
   .service-grid,
-  .price-grid,
   .blog-grid,
-  .stat-grid,
   .testimonials-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1333,10 +1293,8 @@ nav a.active {
 
 @media (max-width: 640px) {
   .service-grid,
-  .price-grid,
   .blog-grid,
   .portfolio-grid,
-  .stat-grid,
   .bio-grid,
   .testimonials-list {
     grid-template-columns: 1fr;

@@ -1454,7 +1454,7 @@ h2 {
   .hero {
     margin-top: 30px;
     padding-top: 50px;
-    padding-bottom: 0;
+    padding-bottom: 50px;
   }
 
   .hero-copy {

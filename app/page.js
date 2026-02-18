@@ -3,6 +3,7 @@ import ScrollReveal from './components/ScrollReveal';
 import SkillBar from './components/SkillBar';
 import TypeWriter from './components/TypeWriter';
 import MobileNav from './components/MobileNav';
+import ScrollToTop from './components/ScrollToTop';
 import {
   FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram,
   FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaBuilding,
@@ -483,6 +484,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ScrollToTop />
 
       {/* ── Footer ── */}
       <footer className="footer">

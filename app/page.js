@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ScrollReveal from './components/ScrollReveal';
 import SkillBar from './components/SkillBar';
 import TypeWriter from './components/TypeWriter';
+import MobileNav from './components/MobileNav';
 import {
   FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram,
   FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaBuilding,
@@ -123,13 +124,14 @@ export default function Home() {
       <header className="topbar">
         <div className="container topbar-inner">
           <div className="logo">Samikshya<span className="accent">.</span></div>
-          <nav>
+          <nav className="desktop-nav">
             {navLinks.map((link) => (
               <a key={link} href={`#${link.toLowerCase()}`} className={link === 'Home' ? 'active' : ''}>
                 {link}
               </a>
             ))}
           </nav>
+          <MobileNav />
         </div>
       </header>
 
